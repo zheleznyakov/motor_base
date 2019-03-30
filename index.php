@@ -10,5 +10,6 @@ require_once (__DIR__.'/Models/User.php');
 if (isset($_GET['action'])){
     $controller = new UserController();
     $act = 'action'.$_GET['action'];
-    $controller->$act();
+    if (method_exists($controller,$act))
+        $controller->$act();
 }
