@@ -1,4 +1,4 @@
 
 <h1>I`m Andrey`</h1>
-<div><?=$item['surname'];?></div>
+<div><?=$items['surname'];?></div>
 <b>test post</b>
