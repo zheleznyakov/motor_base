@@ -6,30 +6,33 @@
  * Time: 16:58
  */
 
-class View
-{
-    const dir = __DIR__.'/../Views/';
-    private $data=[];
+namespace Application\Classes {
 
-
-    public function __set($name, $value)
+    class View
     {
-        $this->data[$name]=$value;
-    }
-    /*
-    public function __get($name)
-    {
-        return $this->data[$name];
-    }*/
+        const dir = __DIR__.'/../Views/';
+        private $data=[];
 
-    public function display($template)
-    {
-        ob_start();
-        $items = $this->data;
 
-        require (self::dir.$template);
-        $content=ob_get_clean();
-        require (self::dir.'layout.php');
-        print(ob_get_clean());
+        public function __set($name, $value)
+        {
+            $this->data[$name]=$value;
+        }
+        /*
+        public function __get($name)
+        {
+            return $this->data[$name];
+        }*/
+
+        public function display($template)
+        {
+            ob_start();
+            $items = $this->data;
+
+            require (self::dir.$template);
+            $content=ob_get_clean();
+            require (self::dir.'layout.php');
+            print(ob_get_clean());
+        }
     }
 }
