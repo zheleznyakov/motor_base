@@ -10,6 +10,7 @@ namespace Application {
     use Application\Controllers\User;
 
     require (__DIR__ . '/../app/autoload.php');
+    require (__DIR__.'/../app/vendor/autoload.php');
 
     if (isset($_GET['action'])){
         $controller = new User();
