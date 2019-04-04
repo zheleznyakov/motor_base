@@ -10,7 +10,7 @@ spl_autoload_register(function($class){
     $classParts = explode('\\',$class);
     if (!empty($classParts))
     {
-        $classParts[0] = __DIR__;
+        $classParts[0] = __DIR__ ;
     }
     $path = implode(DIRECTORY_SEPARATOR,$classParts);
     $path = $path. '.php';

@@ -9,12 +9,13 @@ namespace Application {
 
     use Application\Controllers\User;
 
-    require (__DIR__.'/autoload.php');
+    require (__DIR__ . '/../app/autoload.php');
 
     if (isset($_GET['action'])){
         $controller = new User();
         $act = 'action'.$_GET['action'];
-        if (method_exists($controller,$act))
+        if (method_exists($controller,$act)) {
             $controller->$act();
+        }
     }
 }

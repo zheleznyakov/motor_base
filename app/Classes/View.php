@@ -10,7 +10,7 @@ namespace Application\Classes {
 
     class View
     {
-        const dir = __DIR__.'/../Views/';
+        const dir = __DIR__ . '/../Views/';
         private $data=[];
 
 
