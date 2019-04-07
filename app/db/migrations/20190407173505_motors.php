@@ -3,7 +3,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class MyMigration extends AbstractMigration
+class Motors extends AbstractMigration
 {
     /**
      * Change Method.
@@ -32,18 +32,17 @@ class MyMigration extends AbstractMigration
      */
     public function up()
     {
-        $table = $this->table('objects');
-        $table->addColumn('title', 'string', ['limit' => 255])
-            ->create();
-
-        $table = $this->table('places');
-        $table->addColumn('object_id','integer')
-            ->addForeignKey('object_id','objects','id')
-            ->save();
+        $sql = '
+            CREATE TABLE `motors` (
+            `id` int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `power` float(4,1),
+            `description` text,
+            `photo` blob
+            );';
+            $this->execute($sql);
     }
     public function down()
     {
-        $this->table('places')->drop()->save();
-        $this->table('objects')->drop()->save();
+        $this->table('motors')->drop()->save();
     }
 }
