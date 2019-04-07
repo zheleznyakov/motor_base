@@ -3,7 +3,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class Motors extends AbstractMigration
+class Movement extends AbstractMigration
 {
     /**
      * Change Method.
@@ -33,17 +33,20 @@ class Motors extends AbstractMigration
     public function up()
     {
         $sql = '
-            CREATE TABLE `motors` (
-            `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            `power` float(4,1),
-            `description` text,
-            `photo` blob
-            ) ENGINE=InnoDB
-            ;';
-            $this->execute($sql);
+        CREATE TABLE `movements` (
+            `id` int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `motor_id` int(11) UNSIGNED NOT NULL,
+            `data` datetime default CURRENT_TIMESTAMP,
+            `place_id` int(11) NOT NULL,
+            `comment` text,
+            FOREIGN KEY (motor_id) references motors (id),
+            FOREIGN KEY (place_id) references places (id)
+        ) ENGINE = InnoDB
+        ';
+        $this->execute($sql);
     }
-    public function down()
+    public  function  down()
     {
-        $this->table('motors')->drop()->save();
+        $this->table('movements')->drop()->save();
     }
 }
