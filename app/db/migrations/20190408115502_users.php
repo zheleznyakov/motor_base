@@ -3,7 +3,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class MyMigration extends AbstractMigration
+class Users extends AbstractMigration
 {
     /**
      * Change Method.
@@ -30,21 +30,14 @@ class MyMigration extends AbstractMigration
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function up()
+    public function change()
     {
-        $table = $this->table('objects');
-        $table->addColumn('title', 'string', ['limit' => 255])
+        $table = $this->table('users');
+        $table->addColumn('email','string',['limit'=>255, 'null'=>false])
+            ->addColumn('password','string',['limit'=>255])
+            ->addColumn('name','string',['limit'=>255, 'null'=>false])
+            ->addColumn('invitation','string',['limit'=>25])
+            ->addColumn('group','boolean')
             ->create();
-
-        $table = $this->table('places');
-        $table->addColumn('object_id','integer')
-            ->addColumn('title','string',['limit'=>255])
-            ->addForeignKey('object_id','objects','id')
-            ->create();
-    }
-    public function down()
-    {
-        $this->table('places')->drop()->save();
-        $this->table('objects')->drop()->save();
     }
 }
