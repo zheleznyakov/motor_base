@@ -34,11 +34,13 @@ class MyMigration extends AbstractMigration
     {
         $table = $this->table('objects');
         $table->addColumn('title', 'string', ['limit' => 255])
+            ->addIndex(['title'],['unique'=>true])
             ->create();
 
         $table = $this->table('places');
         $table->addColumn('object_id','integer')
             ->addColumn('title','string',['limit'=>255])
+            ->addIndex(['object_id','title'],['unique'=>true])
             ->addForeignKey('object_id','objects','id')
             ->create();
     }

@@ -33,11 +33,12 @@ class Users extends AbstractMigration
     public function change()
     {
         $table = $this->table('users');
-        $table->addColumn('email','string',['limit'=>255, 'null'=>false])
+        $table->addColumn('email','string',['limit'=>255])
             ->addColumn('password','string',['limit'=>255])
-            ->addColumn('name','string',['limit'=>255, 'null'=>false])
+            ->addColumn('name','string',['limit'=>255])
             ->addColumn('invitation','string',['limit'=>25])
             ->addColumn('group','boolean')
+            ->addIndex(['email'],['unique'=>true])
             ->create();
     }
 }

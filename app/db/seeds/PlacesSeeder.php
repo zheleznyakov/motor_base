@@ -24,5 +24,17 @@ class PlacesSeeder extends AbstractSeed
         $table->insert($data);
         $table->save();
 
+        $data = [
+            ['object_id'=>1,'title'=>'Грохот 1'],
+            ['object_id'=>1, 'title'=>'ЛК-5'],
+            ['object_id'=>1, 'title'=>'ЛК-6'],
+            ['object_id'=>1, 'title'=>'Главный насос подачи'],
+            ['object_id'=>2, 'title'=>'ЛК-10'],
+            ['object_id'=>2, 'title'=>'ЛК-23'],
+        ];
+        $table = $this->table('places');
+        $table->insert($data);
+        $table->save();
+
     }
 }
