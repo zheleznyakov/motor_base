@@ -11,9 +11,12 @@ namespace Application {
 
     require (__DIR__ . '/../app/autoload.php');
     require (__DIR__.'/../app/vendor/autoload.php');
-    echo uniqid("invite");
-    echo '<br/>';
-    echo password_hash('root', PASSWORD_ARGON2I);
+    //echo uniqid("invite");
+    //echo '<br/>';
+    //echo password_hash('root', PASSWORD_ARGON2I);
+    //echo '<br/>';
+    //echo password_verify('root',password_hash('root', PASSWORD_ARGON2I));
+
 
     if (isset($_GET['action'])){
         $controller = new User();

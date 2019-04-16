@@ -11,8 +11,15 @@ namespace Application\Classes {
     class View
     {
         const dir = __DIR__ . '/../Views/';
+        private $theme = "Theme";
+        private $themeDir;
         private $data=[];
+        //папка с темой по умолчанию
 
+        public function __construct()
+        {
+            $this->themeDir = self::dir.'/'.$this->theme.'/';
+        }
 
         public function __set($name, $value)
         {
@@ -29,9 +36,9 @@ namespace Application\Classes {
             ob_start();
             $items = $this->data;
 
-            require (self::dir.$template);
+            require ($this->themeDir.$template);
             $content=ob_get_clean();
-            require (self::dir.'layout.php');
+            require ($this->themeDir.'layout.php');
             print(ob_get_clean());
         }
     }
