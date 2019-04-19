@@ -23,6 +23,9 @@
     <div class="row">
         <div class="col">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="img/motor_icon.jpg" width="40" height="40" alt="">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler01" >
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,8 +48,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-9" style="background: aqua">Content</div>
-        <div class="col-lg-3" style="background: beige">Sidebar</div>
+        <!--Панель -->
+        <div class="col-lg-3" style="background: aqua">Panel</div>
+        <div class="col-lg-9" style="background: beige">Working area</div>
     </div>
     <div class="row">
         <div class="col" style="background: aquamarine">Footer</div>
