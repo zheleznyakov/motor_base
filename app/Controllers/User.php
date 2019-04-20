@@ -24,5 +24,9 @@ namespace Application\Controllers {
 
 
         }
+        public function actionLogin()
+        {
+
+        }
     }
 }

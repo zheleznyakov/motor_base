@@ -50,7 +50,7 @@
     <div class="row">
         <!--Панель -->
         <div class="col-lg-3" style="background: aqua">Panel</div>
-        <div class="col-lg-9" style="background: beige">Working area</div>
+        <div class="col-lg-9" style="background: beige; height: 200px">Working area</div>
     </div>
     <div class="row">
         <div class="col" style="background: aquamarine">Footer</div>

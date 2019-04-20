@@ -7,6 +7,9 @@
  */
 
 namespace Application\Classes {
+    
+    use Twig\Environment;
+    use Twig\Loader\FilesystemLoader;
 
     class View
     {
@@ -14,11 +17,19 @@ namespace Application\Classes {
         private $theme = "Theme";
         private $themeDir;
         private $data=[];
-        //папка с темой по умолчанию
+
+        private $twig;
+
 
         public function __construct()
         {
+
+            //тема по умолчанию
             $this->themeDir = self::dir.'/'.$this->theme.'/';
+
+            $loader = new FilesystemLoader($this->themeDir);
+            $this->twig = new Environment($loader);
+
         }
 
         public function __set($name, $value)
@@ -33,13 +44,14 @@ namespace Application\Classes {
 
         public function display($template)
         {
-            ob_start();
+            /*ob_start();
             $items = $this->data;
 
             require ($this->themeDir.$template);
             $content=ob_get_clean();
             require ($this->themeDir.'layout.php');
-            print(ob_get_clean());
+            print(ob_get_clean());*/
+            echo $this->twig->render("layout.php");
         }
     }
 }

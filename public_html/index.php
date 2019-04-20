@@ -6,7 +6,6 @@
  * Time: 18:29
  */
 namespace Application {
-
     use Application\Controllers\User;
 
     require (__DIR__ . '/../app/autoload.php');
