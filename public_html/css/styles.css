@@ -1,0 +1,11 @@
+.working-area{
+    min-height: 600px;
+    border: 1px solid black;
+}
+.footer{
+    background-color: #343a40 ;
+}
+.alert-primary{
+    margin: 5px;
+}
+

@@ -11,19 +11,9 @@ namespace Application\Controllers {
 
     use Application\Classes\View;
     use Application\Models\User as UserModel;
-    class User
+    class User extends MainController
     {
-        public function actionShow()
-        {
 
-            //$item=[];
-            //$item['surname']=user::getUser();
-            $v = new View();
-            $v->surname = UserModel::getUser();
-            $v->display('main.html');
-
-
-        }
         public function actionLogin()
         {
 

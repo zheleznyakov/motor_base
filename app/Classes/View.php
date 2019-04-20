@@ -49,7 +49,7 @@ namespace Application\Classes {
 
             require ($this->themeDir.$template);
             $content=ob_get_clean();
-            require ($this->themeDir.'layout.html');
+            require ($this->themeDir.'layout.twig');
             print(ob_get_clean());*/
             echo $this->twig->render($template);
         }

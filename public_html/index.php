@@ -17,9 +17,9 @@ namespace Application {
     //echo password_verify('root',password_hash('root', PASSWORD_ARGON2I));
 
 
-    if (isset($_GET['action'])){
+    if (isset($_GET['user'])){
         $controller = new User();
-        $act = 'action'.$_GET['action'];
+        $act = 'action'.$_GET['user'];
         if (method_exists($controller,$act)) {
             $controller->$act();
         }

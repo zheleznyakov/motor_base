@@ -6,13 +6,15 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Учёт электродвигателей предприятия</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col">
+
+            {#Навигационное верхнее меню #}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">
                     <img src="img/motor_icon.jpg" width="40" height="40" alt="">
@@ -39,13 +41,22 @@
         </div>
     </div>
     <div class="row">
-        <!--Панель -->
-        <div class="col-lg-3" style="background: aqua">Panel</div>
-        <div class="col-lg-9" style="background: beige; height: 200px">{% block content %}{% endblock %}</div>
+        <div class="col-12">
+            <div class="working-area">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col" style="background: aquamarine">Footer</div>
+
+    <div class="row no-gutters">
+        <div class="col-lg-7 ">
+            <div class="footer text-white px-5">Система учета электродвигателей</div>
+        </div>
+        <div class="col-lg-5">
+            <div class="footer text-white px-5">©Железняков Андрей Викторович</div>
+        </div>
     </div>
+
 </div>
 
 
