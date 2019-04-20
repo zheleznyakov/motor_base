@@ -1,12 +1,3 @@
-<!--<head>
-    <title>Тестовый шаблон</title>
-</head>
-<body>
-    <?=$content;?>
-    <div id="test"></div>
-</body>
--->
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -50,7 +41,7 @@
     <div class="row">
         <!--Панель -->
         <div class="col-lg-3" style="background: aqua">Panel</div>
-        <div class="col-lg-9" style="background: beige; height: 200px">Working area</div>
+        <div class="col-lg-9" style="background: beige; height: 200px">{% block content %}{% endblock %}</div>
     </div>
     <div class="row">
         <div class="col" style="background: aquamarine">Footer</div>

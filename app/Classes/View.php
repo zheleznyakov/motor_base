@@ -7,7 +7,7 @@
  */
 
 namespace Application\Classes {
-    
+
     use Twig\Environment;
     use Twig\Loader\FilesystemLoader;
 
@@ -49,9 +49,9 @@ namespace Application\Classes {
 
             require ($this->themeDir.$template);
             $content=ob_get_clean();
-            require ($this->themeDir.'layout.php');
+            require ($this->themeDir.'layout.html');
             print(ob_get_clean());*/
-            echo $this->twig->render("layout.php");
+            echo $this->twig->render($template);
         }
     }
 }

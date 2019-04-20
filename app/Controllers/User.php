@@ -20,7 +20,7 @@ namespace Application\Controllers {
             //$item['surname']=user::getUser();
             $v = new View();
             $v->surname = UserModel::getUser();
-            $v->display('OneUser.php');
+            $v->display('main.html');
 
 
         }
