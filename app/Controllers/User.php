@@ -14,9 +14,18 @@ namespace Application\Controllers {
     class User extends MainController
     {
 
+        /**
+         * Авторизация пользователя
+         */
         public function actionLogin()
         {
-
+            echo $_POST['email'];
+            echo $_POST['password'];
         }
+        public function actionShowUsers()
+        {
+            var_dump(UserModel::getAll());
+        }
+
     }
 }

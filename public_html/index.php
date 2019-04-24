@@ -17,6 +17,7 @@ namespace Application {
     //echo password_verify('root',password_hash('root', PASSWORD_ARGON2I));
 
 
+
     if (isset($_GET['user'])){
         $controller = new User();
         $act = 'action'.$_GET['user'];
@@ -24,4 +25,14 @@ namespace Application {
             $controller->$act();
         }
     }
+
+    //login и пароль передаются методом post user=Login email = em password = pw
+    if (isset($_POST['user'])){
+        $controller = new User();
+        $act = 'action'.$_POST['user'];
+        if (method_exists($controller,$act)) {
+            $controller->$act();
+        }
+    }
+
 }
