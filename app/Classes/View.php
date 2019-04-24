@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: andrey
+ * UsersModel: andrey
  * Date: 27.03.19
  * Time: 16:58
  */
@@ -44,13 +44,7 @@ namespace Application\Classes {
 
         public function display($template)
         {
-            /*ob_start();
-            $items = $this->data;
 
-            require ($this->themeDir.$template);
-            $content=ob_get_clean();
-            require ($this->themeDir.'layout.twig');
-            print(ob_get_clean());*/
             echo $this->twig->render($template);
         }
     }
