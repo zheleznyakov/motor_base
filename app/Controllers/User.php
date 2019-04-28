@@ -9,8 +9,10 @@
 //require_once(__DIR__.'/../Classes/View.php');
 namespace Application\Controllers {
 
+    use Application\Classes\DB;
     use Application\Classes\View;
     use Application\Models\UsersModel as UserModel;
+
     class User extends MainController
     {
 
@@ -24,6 +26,8 @@ namespace Application\Controllers {
         }
         public function actionShowUsers()
         {
+            echo "hello";
+            UserModel::setDB(DB::getInstance());
             var_dump(UserModel::getAll());
         }
 

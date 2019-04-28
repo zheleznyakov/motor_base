@@ -15,6 +15,14 @@ abstract class AbstractModel
      */
     protected static $table;
 
+    //protected static $db;
+
+    protected static $db;
+
+    public static function setDB(DB $instance)
+    {
+        self::$db = $instance;
+    }
 
     /**
      * @return string Название таблицы
@@ -30,12 +38,12 @@ abstract class AbstractModel
     public static function getAll()
     {
         //узнаем имя класса, для которого вызвана функция
-        $class = get_called_class();
+        //$class = get_called_class();
         $sql = 'SELECT * FROM ' .static::getTable();
-        $db = new DB();
+        //$db = new DB();
         // передадим имя класса, для того, чтобы db вернула ответ нужного нам типа
-        $db->setClassName($class);
-        return $db->query($sql);
+        //$db->setClassName($class);
+        return self::$db->query($sql,[],get_called_class());
     }
 
     /**
@@ -46,8 +54,8 @@ abstract class AbstractModel
     {
 
         $sql = 'SELECT * FROM ' .static::getTable().' WHERE id=:id';
-        $db = new DB();
-        $db->setClassName(get_called_class());
-        return $db->query($sql,[':id'=>$id]);
+        //$db = new DB();
+        //$db->setClassName(get_called_class());
+        return self::$db->query($sql,[':id'=>$id],get_called_class());
     }
 }

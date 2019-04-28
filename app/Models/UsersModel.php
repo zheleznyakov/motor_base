@@ -13,12 +13,12 @@ class UsersModel extends AbstractModel
 {
     protected static $table = "users";
 
+
     public static function findByEmail($email)
     {
         $sql = 'SELECT FROM '.self::$table. ' WHERE email=:email';
-        $db = new DB();
-        $db->setClassName(get_called_class());
-        return $db->query($sql,[':email'=>$email]);
-
+        //$db = new DB();
+        //$db->setClassName(get_called_class());
+        return self::$db->query($sql,[':email'=>$email],get_called_class());
     }
 };

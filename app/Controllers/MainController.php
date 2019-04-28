@@ -16,7 +16,6 @@ abstract class MainController
     public function __construct()
     {
         $this->view = new View();
-        $db = new DB();
     }
     public function actionShow()
     {

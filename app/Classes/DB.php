@@ -3,6 +3,7 @@
 
 namespace Application\Classes;
 use PDO;
+use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * Class DB обеспечивает связь с базой данных приложения
@@ -10,15 +11,42 @@ use PDO;
  */
 class DB
 {
+    private static $instance;
     private $dbh;
     private $className = 'stdClass';
+    private static $debug = false;
+
 
     /**
      * DB constructor. Создает экземпляр класса PDO для работы с базой данных
      */
-    public function __construct()
+    private function __construct()
     {
-        $this->dbh = new PDO('mysql:dbname=motors_development_db;host=localhost','phpmyadmin','admin');
+        if (!self::$debug)
+            $this->dbh = new PDO(
+                'mysql:dbname=motors_development_db;host=localhost',
+                'phpmyadmin',
+                'admin'
+            );
+    }
+
+    public static function getInstance()
+    {
+        if (self::$instance === null)
+        {
+            self::$instance = new DB();
+        }
+        return self::$instance;
+
+
+    }
+
+    public static function debug($d)
+    {
+        if ($d==true)
+            self::$debug = true;
+        if ($d==false)
+            self::$debug = false;
     }
 
     /**
@@ -30,16 +58,18 @@ class DB
     }
 
     /**
+     * Функция возвращает результат запроса к безе данных
      * @param string $sql Строка подготовленного SQL запроса
      * @param array $params [optional] Параметры, передаваемые в SQL запрос
-     * @return object
+     * @param string $className тип возвращаемого значения, по умолчанию stdClass
+     * @return array
      */
-    public function query($sql, $params=[])
+    public function query($sql, $params=[],$className='stdClass')
     {
         var_dump($sql);
         $sth = $this->dbh->prepare($sql);
         $sth->execute($params);
-        return $sth->fetchAll(PDO::FETCH_CLASS,$this->className);
+        return $sth->fetchAll(PDO::FETCH_CLASS,$className);
     }
 
 }
