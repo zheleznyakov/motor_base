@@ -1,9 +1,15 @@
 {% extends "layout.twig" %}
 
 {% block content %}
+    {% if messageType == "alert" %}
     <div class="alert alert-danger" role="alert">
-        Авторизуйтесь в системе.
+        {{ message }}
     </div>
+    {% elseif messageType == "success" %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
     <img src="img/engines.jpg" class="img-fluid" alt = "Engines">
 
 {% endblock %}

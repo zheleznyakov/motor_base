@@ -66,7 +66,6 @@ class DB
      */
     public function query($sql, $params=[],$className='stdClass')
     {
-        var_dump($sql);
         $sth = $this->dbh->prepare($sql);
         $sth->execute($params);
         return $sth->fetchAll(PDO::FETCH_CLASS,$className);

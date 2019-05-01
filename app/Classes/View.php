@@ -42,10 +42,10 @@ namespace Application\Classes {
             return $this->data[$name];
         }*/
 
-        public function display($template)
+        public function display($template='main.twig')
         {
 
-            echo $this->twig->render($template);
+            echo $this->twig->render($template,$this->data);
         }
     }
 }

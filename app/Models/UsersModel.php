@@ -8,18 +8,38 @@
 namespace Application\Models;
 
 use Application\Classes\DB;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class UsersModel extends AbstractModel
 {
     protected static $table = "users";
 
+    public $id;
+    public $email;
+    public $password;
+    public $name;
+    public $invitation;
+    public $group;
 
+    public function verify(string $password):bool
+    {
+        return password_verify($password,  $this->password);
+    }
+
+
+    /**
+     * Поиск пользователя по адресу эл.почты
+     * @param string $email email адрес пользователя
+     * @return UsersModel|null
+     */
     public static function findByEmail($email)
     {
         $sql = 'SELECT * FROM '.self::$table. ' WHERE email=:email';
-        //$db = new DB();
-        //$db->setClassName(get_called_class());
-        return self::$db->query($sql,[':email'=>$email],get_called_class());
+
+        $result = self::$db->query($sql,[':email'=>$email],get_called_class());
+        if (!empty($result))
+            return $result[0];
+        return null;
     }
 
 };
