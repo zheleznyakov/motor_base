@@ -11,19 +11,34 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractModelTest extends TestCase
 {
-    public function test_getAll()
+    private $db_stub;
+    private $abstract_model;
+
+    protected function setUp():void
     {
         //создадим заглушку для базы данных
-        $db_stub = $this->createMock(DB::class);
+        $this->db_stub = $this->createMock(DB::class);
 
-        $db_stub->method('query')->willReturn('OK');
+        $this->db_stub->expects($this->once())
+            ->method('query')
+            ->with($this->stringContains('SELECT * FROM'))
+            ->will($this->returnValue('OK'));
 
-        $abstract_model = $this
+        //$db_stub->method('query')->willReturn('OK');
+
+        $this->abstract_model = $this
             ->getMockBuilder(AbstractModel::class)
             ->getMockForAbstractClass();
-        $abstract_model::setDB($db_stub);
-        $result = $abstract_model::getAll();
-
+        $this->abstract_model::setDB($this->db_stub);
+    }
+    public function test_getAll()
+    {
+        $result = $this->abstract_model::getAll();
         $this->assertSame('OK',$result);
+    }
+
+    public function test_getOneByPk()
+    {
+        $this->abstract_model::getOneByPk(1);
     }
 }

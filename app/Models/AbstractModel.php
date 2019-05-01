@@ -15,10 +15,14 @@ abstract class AbstractModel
      */
     protected static $table;
 
-    //protected static $db;
-
+    /**
+     * @var DB $db База данных
+     */
     protected static $db;
 
+    /**
+     * @param DB $instance экземпляр базы данных
+     */
     public static function setDB(DB $instance)
     {
         self::$db = $instance;
