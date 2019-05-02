@@ -33,6 +33,7 @@
                         </li>
                     </ul>
                     {% if logged == false %}
+                        {# Форма входа #}
                         <form class="form-inline" method="post" action="index.php">
                             <input type="hidden" name="user" value="Login" />
                             <input class="form-control mr-2 my-2" type="text" placeholder="Email" aria-label="Email" name="email">
@@ -40,23 +41,19 @@
                             <button class="btn btn-outline-success my-2" type="submit">Вход</button>
                         </form>
                     {% else %}
-                    <div class="navbar-nav ml-auto">
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-atom"></i> Настройки
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Пользователь</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.php?user=LogOut"><i class="fas fa-sign-out-alt"></i>  Выход</a>
+                        {# Меню пользователя #}
+                        <div class="navbar-nav ml-auto">
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-atom"></i> Настройки
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Пользователь</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="index.php?user=LogOut"><i class="fas fa-sign-out-alt"></i>  Выход</a>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- <form class="form-inline" method="post" action="index.php">
-                            <input type="hidden" name="user" value="LogOut" />
-                            <button class="btn btn-outline-success my-2" type="submit">Выход</button>
-                        </form> -->
-                    </div>
                     {% endif %}
                 </div>
             </nav>
