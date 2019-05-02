@@ -45,8 +45,11 @@ namespace Application\Controllers {
                 $this->view->display();
                 return;
             }
+
             session_start();
             $_SESSION['user'] = $res->name;
+            $this->view->logged = true;
+
             $this->view->messageType = 'success';
             $this->view->message = "Добро пожаловать ".$res->name;
             $this->view->display();
@@ -54,6 +57,16 @@ namespace Application\Controllers {
 
 
         }
+        public function actionLogOut()
+        {
+            session_start();
+            $_SESSION = array();
+            session_destroy();
+            unset($this->view->logged);
+
+            $this->view->display();
+        }
+
         public function actionShowUsers()
         {
             echo "hello";

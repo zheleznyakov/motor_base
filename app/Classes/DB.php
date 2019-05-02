@@ -50,7 +50,7 @@ class DB
     }
 
     /**
-     * @param $name имя класса (тип), который необходимо возвращать при запросе query
+     * @param string $name имя класса (тип), который необходимо возвращать при запросе query
      */
     public function setClassName($name)
     {

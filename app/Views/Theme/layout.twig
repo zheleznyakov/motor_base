@@ -31,12 +31,19 @@
                             <a class="nav-link" href="#">Пользователи</a>
                         </li>
                     </ul>
-                    <form class="form-inline" method="post" action="index.php">
-                        <input type="hidden" name="user" value="Login" />
-                        <input class="form-control mr-2 my-2" type="text" placeholder="Email" aria-label="Email" name="email">
-                        <input class="form-control mr-2" type="password" placeholder="Пароль" aria-label="Пароль" name="password">
-                        <button class="btn btn-outline-success my-2" type="submit">Вход</button>
-                    </form>
+                    {% if logged == false %}
+                        <form class="form-inline" method="post" action="index.php">
+                            <input type="hidden" name="user" value="Login" />
+                            <input class="form-control mr-2 my-2" type="text" placeholder="Email" aria-label="Email" name="email">
+                            <input class="form-control mr-2" type="password" placeholder="Пароль" aria-label="Пароль" name="password">
+                            <button class="btn btn-outline-success my-2" type="submit">Вход</button>
+                        </form>
+                    {% else %}
+                        <form class="form-inline" method="post" action="index.php">
+                            <input type="hidden" name="user" value="LogOut" />
+                            <button class="btn btn-outline-success my-2" type="submit">Выход</button>
+                        </form>
+                    {% endif %}
                 </div>
             </nav>
         </div>

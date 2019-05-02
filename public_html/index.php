@@ -23,6 +23,7 @@ namespace Application {
         $act = 'action'.$_GET['user'];
         if (method_exists($controller,$act)) {
             $controller->$act();
+            die;
         }
     }
 
@@ -32,7 +33,11 @@ namespace Application {
         $act = 'action'.$_POST['user'];
         if (method_exists($controller,$act)) {
             $controller->$act();
+            die;
         }
     }
+
+    $controller = new User();
+    $controller->actionShow();
 
 }

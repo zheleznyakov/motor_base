@@ -21,6 +21,11 @@ class UsersModel extends AbstractModel
     public $invitation;
     public $group;
 
+    /**
+     * Проверяет пароль на соответствие хешу
+     * @param string $password
+     * @return bool
+     */
     public function verify(string $password):bool
     {
         return password_verify($password,  $this->password);
