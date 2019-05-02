@@ -10,34 +10,24 @@ namespace Application {
 
     require (__DIR__ . '/../app/autoload.php');
     require (__DIR__.'/../app/vendor/autoload.php');
-    //echo uniqid("invite");
-    //echo '<br/>';
-    //echo password_hash('root', PASSWORD_ARGON2I);
-    //echo '<br/>';
-    //echo password_verify('root',password_hash('root', PASSWORD_ARGON2I));
 
+    //выделить путь без части get запросов
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    //разбить на части по знаку /
+    $pathParts = explode('/',$path);
 
+    $controllerName = !empty($pathParts[1])? $pathParts[1] : 'User';
+    $actionName = !empty($pathParts[2])? $pathParts[2] : 'Show';
 
-    if (isset($_GET['user'])){
-        $controller = new User();
-        $act = 'action'.$_GET['user'];
-        if (method_exists($controller,$act)) {
-            $controller->$act();
-            die;
-        }
-    }
-
-    //login и пароль передаются методом post user=Login email = em password = pw
-    if (isset($_POST['user'])){
-        $controller = new User();
-        $act = 'action'.$_POST['user'];
-        if (method_exists($controller,$act)) {
-            $controller->$act();
-            die;
-        }
-    }
+    $controllerName = 'Application\Controllers\\'.$controllerName;
+    $actionName = 'action'.$actionName;
 
     $controller = new User();
-    $controller->actionShow();
+    //var_dump($actionName);
+
+    if (method_exists($controller,$actionName)) {
+        $controller->$actionName();
+    }
+
 
 }

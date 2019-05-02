@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Учёт электродвигателей предприятия</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
             {#Навигационное верхнее меню #}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">
-                    <img src="img/motor_icon.jpg" width="40" height="40" alt="">
+                    <img src="/img/motor_icon.jpg" width="40" height="40" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler01" >
                     <span class="navbar-toggler-icon"></span>
@@ -26,16 +26,16 @@
                 <div class="collapse navbar-collapse" id="navbarToggler01">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Моторы</a>
+                            <a class="nav-link" href="#"><i class="fab fa-searchengin"></i> Моторы</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Пользователи</a>
+                            <a class="nav-link" href="#"><i class="fas fa-users-cog"></i> Пользователи</a>
                         </li>
                     </ul>
                     {% if logged == false %}
                         {# Форма входа #}
-                        <form class="form-inline" method="post" action="index.php">
-                            <input type="hidden" name="user" value="Login" />
+                        <form class="form-inline" method="post" action="/user/login">
+                            {# <input type="hidden" name="user" value="Login" /> #}
                             <input class="form-control mr-2 my-2" type="text" placeholder="Email" aria-label="Email" name="email">
                             <input class="form-control mr-2" type="password" placeholder="Пароль" aria-label="Пароль" name="password">
                             <button class="btn btn-outline-success my-2" type="submit">Вход</button>
@@ -50,7 +50,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Пользователь</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="index.php?user=LogOut"><i class="fas fa-sign-out-alt"></i>  Выход</a>
+                                    <a class="dropdown-item" href="/user/logout"><i class="fas fa-sign-out-alt"></i>  Выход</a>
                                 </div>
                             </div>
                         </div>
