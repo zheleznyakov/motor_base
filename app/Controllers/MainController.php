@@ -16,9 +16,17 @@ abstract class MainController
     public function __construct()
     {
         $this->view = new View();
+        $this->sessionStart();
+    }
+    protected function sessionStart()
+    {
+        session_start();
+        if (isset($_SESSION['logged']))
+            $this->view->logged = $_SESSION['logged'];
     }
     public function actionShow()
     {
+
         $this->view->display('main.twig');
 
     }

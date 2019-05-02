@@ -21,6 +21,9 @@ namespace Application\Classes {
         private $twig;
 
 
+        /**
+         * View constructor. Подготавливает twig к работе
+         */
         public function __construct()
         {
 
@@ -36,12 +39,19 @@ namespace Application\Classes {
         {
             $this->data[$name]=$value;
         }
-        /*
+
         public function __get($name)
         {
             return $this->data[$name];
-        }*/
+        }
 
+        /**
+         * Отображает twig шаблон
+         * @param string $template имя файла шаблона
+         * @throws \Twig\Error\LoaderError
+         * @throws \Twig\Error\RuntimeError
+         * @throws \Twig\Error\SyntaxError
+         */
         public function display($template='main.twig')
         {
 

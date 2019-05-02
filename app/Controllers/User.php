@@ -46,9 +46,8 @@ namespace Application\Controllers {
                 return;
             }
 
-            session_start();
-            $_SESSION['user'] = $res->name;
-            $this->view->logged = true;
+            $_SESSION['logged'] = true;
+            $this->view->logged = $_SESSION['logged'];
 
             $this->view->messageType = 'success';
             $this->view->message = "Добро пожаловать ".$res->name;
@@ -59,10 +58,9 @@ namespace Application\Controllers {
         }
         public function actionLogOut()
         {
-            session_start();
             $_SESSION = array();
             session_destroy();
-            unset($this->view->logged);
+            $this->view->logged = false;
 
             $this->view->display();
         }
