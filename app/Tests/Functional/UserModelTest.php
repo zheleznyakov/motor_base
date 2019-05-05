@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\Tests\Integration;
+namespace Application\Tests\Functional;
 
 
 use Application\Classes\DB;
