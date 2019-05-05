@@ -28,6 +28,12 @@ class DB
                 'phpmyadmin',
                 'admin'
             );
+        if  (self::$debug)
+            $this->dbh = new PDO(
+                'mysql:dbname=motors_testing_db;host=localhost',
+                'phpmyadmin',
+                'admin'
+            );
     }
 
     public static function getInstance()
@@ -69,6 +75,12 @@ class DB
         $sth = $this->dbh->prepare($sql);
         $sth->execute($params);
         return $sth->fetchAll(PDO::FETCH_CLASS,$className);
+    }
+
+    public function execute($sql, $params=[]) :bool
+    {
+        $sth = $this->dbh->prepare($sql);
+        return $sth->execute($params);
     }
 
 }

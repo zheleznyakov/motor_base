@@ -26,9 +26,9 @@ environments:
     testing:
         adapter: mysql
         host: localhost
-        name: testing_db
-        user: root
-        pass: ''
+        name: motors_testing_db
+        user: phpmyadmin
+        pass: 'admin'
         port: 3306
         charset: utf8
 
