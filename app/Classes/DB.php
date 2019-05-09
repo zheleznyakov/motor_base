@@ -24,15 +24,15 @@ class DB
     {
         if (!self::$debug)
             $this->dbh = new PDO(
-                'mysql:dbname=motors_development_db;host=localhost',
-                'phpmyadmin',
-                'admin'
+                'mysql:dbname=motors_development_db;host=127.0.0.1',
+                'root',
+                ''
             );
         if  (self::$debug)
             $this->dbh = new PDO(
-                'mysql:dbname=motors_testing_db;host=localhost',
-                'phpmyadmin',
-                'admin'
+                'mysql:dbname=motors_testing_db;host=127.0.0.1',
+                'root',
+                ''
             );
     }
 
