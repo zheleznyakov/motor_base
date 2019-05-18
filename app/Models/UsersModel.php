@@ -47,4 +47,19 @@ class UsersModel extends AbstractModel
         return null;
     }
 
+    /**
+     * Возвращает всех пользователей сервиса
+     * @return array|null массив UsersModel
+     */
+    public static function findAllUsers()
+    {
+        $sql = 'SELECT * FROM '.self::$table;
+
+        $result = self::$db->query($sql,[],get_called_class());
+
+        if (!empty($result))
+            return $result;
+        return null;
+    }
+
 };

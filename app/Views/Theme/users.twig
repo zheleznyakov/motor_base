@@ -1,0 +1,16 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    {% if messageType == "alert" %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    {% elseif messageType == "success" %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}
